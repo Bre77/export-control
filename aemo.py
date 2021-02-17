@@ -27,11 +27,12 @@ while True:
             break
 
 price = (data[-1]['RRP']+data[-2]['RRP']+data[-3]['RRP']+data[-4]['RRP']+data[-5]['RRP']+data[-6]['RRP'])/6
-#print(data[-1]['SETTLEMENTDATE'],data[-2]['SETTLEMENTDATE'],data[-3]['SETTLEMENTDATE'],data[-4]['SETTLEMENTDATE'],data[-5]['SETTLEMENTDATE'],data[-6]['SETTLEMENTDATE'])
+print(data[-1]['RRP'],data[-2]['RRP'],data[-3]['RRP'],data[-4]['RRP'],data[-5]['RRP'],data[-6]['RRP'])
+print(data[-1]['SETTLEMENTDATE'],data[-2]['SETTLEMENTDATE'],data[-3]['SETTLEMENTDATE'],data[-4]['SETTLEMENTDATE'],data[-5]['SETTLEMENTDATE'],data[-6]['SETTLEMENTDATE'])
 
 if(price > 0):
-    print(f"Export up to {MAX_EXPORT}kWh, wholesale FiT is {price/10} c/kWh")
+    print(f"Export up to {MAX_EXPORT}kWh, wholesale FiT is expected to be {round(price/10,3)} c/kWh")
 else:
-    print(f"Export up to {MIN_EXPORT}kWh, wholesale FiT is {price/10} c/kWh")
+    print(f"Export up to {MIN_EXPORT}kWh, wholesale FiT is expected to be {round(price/10,3)} c/kWh")
 
 
