@@ -11,7 +11,7 @@ class FroniusAdapter(requests.adapters.HTTPAdapter):
     def build_response(self, req, resp):
         response = super().build_response(req, resp)
         # Remap the custom Fronius Digest header
-        response.headers['WWW-Authenticate'] = response.headers.get('X-WWW-Authenticate')
+        if 'X-WWW-Authenticate' in response.headers: response.headers['WWW-Authenticate'] = response.headers.pop('X-WWW-Authenticate') 
         return response
 
 with requests.session() as s:
