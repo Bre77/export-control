@@ -18,9 +18,7 @@ with requests.session() as s:
     s.mount(BASE, FroniusAdapter())
     s.auth = requests.auth.HTTPDigestAuth(USERNAME,PASSWORD)
     dno = s.get(BASE+'/config/exportlimit/')
-    if not dno.ok:
-        print(dno.status_code)
-        exit
+    dno.raise_for_status()
 
     payload = dno.json()['Body']['Data']
     payload['exportlimit']['DPL_WLIM_ABS'] = EXPORT_LIMIT
